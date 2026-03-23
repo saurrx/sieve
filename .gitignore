@@ -1,0 +1,5 @@
+node_modules/
+cache/
+.DS_Store
+dashboard/app/node_modules/
+dashboard/app/dist/

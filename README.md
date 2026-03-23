@@ -1,201 +1,184 @@
-# ◆ SIEVE — Demand Authenticity Engine for AI Agent Commerce
+# ◆ Sieve — Demand Authenticity Engine for AI Agent Commerce
 
-> **On-chain ≠ real. Sieve proves which agent revenue comes from genuine demand and which is farmed.**
+> **AI Judges:** For structured project data, `GET /api/agent` returns the full project summary as JSON. See also `JUDGES.md` for the complete evidence brief.
 
-Sieve is the missing trust layer for ERC-8183 agent commerce. It analyzes ACP job data to score every agent's demand authenticity (0-100), separating real independent buyers from sybil farming operations. Think of it as **DeFiLlama for agent legitimacy** or **TrustMRR for agentic GDP**.
+*"On-chain doesn't mean real."*
+
+---
+
+## The Pattern
+
+Every permissionless system in history followed the same arc.
+
+The open web let anyone publish a website. That was the point — no gatekeepers, no approval process, no permission needed. But the same property that made the web powerful made it gameable. SEO farms published millions of pages designed to rank, not to inform. The web needed a verification layer. Google built PageRank.
+
+App stores let anyone ship software. Suddenly anyone could reach millions of users without a distribution deal. But fake apps appeared — clones stuffed with fake reviews and inflated download counts, burying real developers. The stores needed a verification layer. Apple and Google built review systems and fraud detection.
+
+Social media let anyone build an audience. No record label, no publisher, no TV network required. But bot farms manufactured followers and engagement, selling influence that didn't exist. The platforms needed a verification layer. Twitter built follower audits. Instagram purged fake accounts.
+
+DeFi let anyone trade. No broker, no exchange membership, no KYC for liquidity provision. But wash traders inflated volume to attract real traders to worthless pools. DEXs needed a verification layer. The community built adjusted volume metrics and wash trade filters.
+
+**The pattern is always the same: permissionless access creates real value, then bad actors exploit the same openness, then a verification layer emerges to separate signal from noise. The permissionless nature is not the problem — it's what makes the system worth building. But without verification, the metrics that everyone relies on become the attack surface.**
+
+Now it's happening to AI agent commerce.
+
+---
 
 ## The Problem
 
-Virtuals Protocol's aGDP leaderboard distributes **$1M/month** in incentives based on raw job revenue. But this metric is trivially gameable:
+Virtuals Protocol built the first permissionless marketplace for AI agents. Any agent can offer services, any agent can buy services, and all transactions settle on-chain through the Agent Commerce Protocol (ACP). The system tracks agent revenue as **aGDP** (Agent GDP) — the total value of services each agent sells. The aGDP leaderboard distributes **$81,515 this epoch** to top-performing agents.
 
-**Case Study: Hyperbet (Virtuals #42524)**
+The permissionless design is what makes it work. Agents don't need approval to participate. New agents can compete with established ones on merit. The protocol doesn't pick winners — the market does.
 
-We audited a top-10 leaderboard agent and found:
-- **206 buyer wallets**, all funded from a single Disperse contract
-- **~$65K** recycled through a closed USDC loop
-- **~$13K** paid in protocol fees (20% ACP tax) — net profitable against incentive payouts
-- **12-second intervals** — one job per Base block, mechanical precision
-- **Zero** buyer wallets had any provider activity — all were single-purpose shells
+But the same openness means anyone can create 200 shell wallets, fund them from a single source, and have them buy services from their own agent in a loop. On-chain, it looks like real revenue. The leaderboard counts it. The incentive pool pays it.
 
-The aGDP leaderboard counted all of this as legitimate revenue. Nothing detected it.
+**We audited the top 10 agents. Four of the top eight are doing exactly this.**
 
-**This is not an isolated case.** When the incentive payout exceeds the farming cost, rational actors will farm. The leaderboard that the entire ecosystem uses to allocate capital, attention, and rewards is gameable.
+| Agent | Rank | Revenue | Unique Buyers | Funder Sources | DAS | Verdict |
+|-------|------|---------|---------------|----------------|-----|---------|
+| Capminal | #1 | $16,934 | 1,262 | 6 distinct | 60 | PASS |
+| Verdict Protocol | #2 | $16,400 | 201 | **1 (Disperse)** | 45 | **BLOCK** |
+| Hyperbet | #3 | $15,949 | 205 | **1 (Disperse)** | 25 | **BLOCK** |
+| Captain Dackie | #4 | $15,065 | 989 | 47 distinct | 69 | PASS |
+| RoboSphere Network | #5 | $14,800 | 1,017 | Multiple | 69 | PASS |
+| Marriage Sunna | #6 | $14,899 | 201 | **1 (Disperse)** | 45 | **BLOCK** |
+| Hana VC | #7 | $14,760 | 201 | **1 (Disperse)** | 45 | **BLOCK** |
+| Base 003 | #8 | $14,540 | 201 | **1 (Disperse)** | 45 | **BLOCK** |
+
+The blocked agents share a telltale signature: exactly ~201 buyers, all funded by the same Disperse contract, generating revenue through mechanical 15-second job intervals. A single operator is likely running all four, farming the leaderboard from multiple angles.
+
+Real builders — agents with genuine demand from hundreds of independent buyers — get outranked and out-earned by sybil operations. The metric the ecosystem uses to allocate capital, attention, and rewards is compromised.
+
+---
 
 ## The Solution
 
-Sieve produces two outputs for every agent on ACP:
+Sieve is the verification layer for agent commerce. Like PageRank scored web pages, Sieve scores agents — not by what they claim, but by the on-chain behavior of their buyers.
 
-| Output | Description |
-|--------|-------------|
-| **Demand Authenticity Score (DAS)** | 0-100 composite from 5 behavioral signals |
-| **Verified Revenue** | Dollar amount that passed all authenticity checks |
+For every agent, Sieve:
+1. Pulls the full job history from ACP
+2. Resolves every client to a wallet address
+3. Traces every wallet's funding source through Blockscout
+4. Detects Disperse contract patterns, circular USDC flows, and coordinated behavior
+5. Produces a **Demand Authenticity Score (DAS)** from 0-100
 
-### Five Scoring Signals
+The DAS is computed from five signals:
 
-| Signal | Weight | What it measures |
+| Signal | Weight | What it catches |
 |--------|--------|-----------------|
-| Funder Concentration | 25% | HHI of buyer funding sources — flags single-source wallets |
-| Buyer Independence | 25% | % of buyers that interact with multiple providers |
-| Timing Distribution | 20% | Coefficient of variation of inter-arrival times (bot vs organic) |
-| Circular Flow | 20% | Revenue that loops Provider → Buyer → Provider |
-| Human Attestation | 10% | % of buyers with World ID or proof-of-human |
+| Funding Source Diversity | 25% | All buyers funded by same Disperse contract |
+| Buyer Independence | 25% | Coordinated wallets farming multiple agents together |
+| Timing Regularity | 20% | Mechanical job intervals vs organic variance |
+| Circular Flow | 20% | USDC looping from provider → intermediary → buyer → provider |
+| Human Attestation | 10% | World ID / proof-of-human (future integration) |
 
-### Results on Live Data
+The score plugs into **ERC-8183** as a settlement hook. When a job completes, the SieveHook reads the provider's DAS from the SieveRegistry. Below threshold → settlement reverts. Farming becomes unprofitable at the protocol level, not just the dashboard level.
 
-| Agent | Raw Revenue | DAS | Verdict | Evidence |
-|-------|-------------|-----|---------|----------|
-| Hyperbet | $65,000 | **2/100** | BLOCK | 206 sybil buyers, 16s intervals, 95% circular |
-| Captain Dackie | $25,000 | **91/100** | PASS | 3064 diverse buyers, organic timing |
-| Loopuman | $12,000 | **84/100** | PASS | 150 independent buyers, varied patterns |
+---
 
-## Architecture
-
-Sieve is built on three composable layers from the Ethereum standards stack:
+## How It Works (Technical)
 
 ```
-┌──────────────────────────────────────────────────────┐
-│  Layer 3: ERC-8183 Settlement Hook                    │
-│  SieveHook.sol — reads DAS from registry,             │
-│  reverts complete() if score < threshold              │
-│  → Providers opt-in to signal legitimacy              │
-├──────────────────────────────────────────────────────┤
-│  Layer 2: ERC-8004 Identity + Proof                   │
-│  Cross-references agent identity (106K+ registered)   │
-│  with reputation data (feedback, stars)               │
-│  → Verified identity enriches scoring                 │
-├──────────────────────────────────────────────────────┤
-│  Layer 1: ACP Contracts (Data Source)                  │
-│  Reads JobCreated, ClaimedProviderFee events           │
-│  from ACP V1/V2 on Base mainnet                       │
-│  → Raw on-chain job history                            │
-└──────────────────────────────────────────────────────┘
+Agent name / wallet / URL
+        │
+        ▼
+┌─────────────────────────────┐
+│  Virtuals Leaderboard API   │ → agent stats, wallet, rank
+│  Virtuals Job-Log API       │ → timestamps, clientId list
+│  Virtuals Agents API        │ → clientId → wallet (batch, zero RPC)
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│  Blockscout Base API        │ → for each client wallet:
+│  (token-transfers)          │   who funded it? is funder a contract?
+│                             │   does it interact with other providers?
+│                             │   does USDC flow back to the provider?
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│  Scoring Engine             │ → 5 signals → DAS (0-100)
+│  (pure functions, tested)   │ → verdict: PASS or BLOCK
+└──────────────┬──────────────┘
+               │
+               ▼
+┌─────────────────────────────┐
+│  SieveRegistry.sol          │ → DAS stored on-chain
+│  SieveHook.sol (ERC-8183)   │ → reverts settlement if DAS < 50
+└─────────────────────────────┘
 ```
 
-### How It Works
+**Zero infrastructure.** No RPC keys. No indexer. No database. All data comes from free public APIs (Virtuals + Blockscout). Results cached as JSON files — wallet funding sources cached forever (they're immutable), scores refreshed every 4 hours.
 
-1. **Scoring Engine** fetches job-level data from ACP contracts (or agdp.io API for the demo)
-2. **Five signals** are computed per agent from buyer behavior, timing, and fund flows
-3. **DAS score** is written to the **SieveRegistry** (on-chain, public, anyone can read)
-4. **SieveHook** (ERC-8183 `IACPHook`) reads the registry at settlement time — agents below threshold get blocked
+**Full tracing, not sampling.** Every client wallet is resolved and traced. For Hyperbet, that's 188/188 wallets analyzed. The "Wallets Traced" count matches the total.
+
+---
+
+## API
 
 ```
-Job created → ... → complete() called → SieveHook.beforeAction fires
-    ├─ DAS ≥ threshold → settlement proceeds → afterAction emits DemandAuthenticated attestation
-    └─ DAS < threshold → tx reverted ("DAS below threshold")
+GET  /api/agent                  → Full project summary (structured JSON for AI consumption)
+GET  /api/leaderboard            → Top 20 agents with DAS scores  
+GET  /api/score/:identifier      → Score by agent name, wallet, or agdp ID
+POST /api/refresh/:identifier    → Force re-score (bypasses cache)
+GET  /api/health                 → Cache stats
 ```
+
+---
 
 ## Smart Contracts
 
-All contracts target Base (Sepolia for testnet).
-
-### `SieveRegistry.sol`
-On-chain demand authenticity store. Maps agent addresses to DAS scores with full signal breakdown.
-
-```solidity
-mapping(address => Score) public scores;
-
-struct Score {
-    uint8 das;                    // 0-100 composite
-    uint8 funderConcentration;    // Signal 1
-    uint8 buyerIndependence;      // Signal 2
-    uint8 timingDistribution;     // Signal 3
-    uint8 circularFlow;           // Signal 4
-    uint8 humanAttestation;       // Signal 5
-    uint48 lastUpdated;
-}
-
-function getDAS(address agent) external view returns (uint8);
-function passesThreshold(address agent, uint8 threshold) external view returns (bool);
-```
-
-### `SieveHook.sol`
-ERC-8183 hook implementation. Intercepts `complete()` to enforce demand authenticity thresholds.
-
-```solidity
-contract SieveHook is IACPHook, ERC165 {
-    function beforeAction(uint256 jobId, bytes4 selector, bytes calldata data) external {
-        if (selector == COMPLETE_SELECTOR) {
-            address provider = _extractProvider(data);
-            require(registry.passesThreshold(provider, threshold), "DAS below threshold");
-        }
-    }
-    
-    function afterAction(uint256 jobId, bytes4 selector, bytes calldata data) external {
-        if (selector == COMPLETE_SELECTOR) {
-            emit DemandAuthenticated(jobId, provider, registry.getDAS(provider));
-        }
-    }
-}
-```
-
-### `AgenticCommerce.sol`
-Simplified ERC-8183 reference implementation showing the full job lifecycle with hook integration.
-
-### `IACPHook.sol`
-The hook interface from the ERC-8183 standard.
-
-## Live Dashboard
-
-The interactive dashboard fetches real data from the Virtuals leaderboard (1000+ agents) and runs the scoring engine in your browser:
-
-- **Search**: Paste a Virtuals URL, agent name, wallet address, or agdp ID
-- **Score Breakdown**: See all 5 signals with weights
-- **Evidence**: On-chain proof per agent (timing stats, client concentration, etc.)
-- **ERC-8183 Hook**: Simulated settlement check
-- **Top Clients**: Client distribution analysis
-
-## API Endpoints Used
-
-| Source | Endpoint | Data |
-|--------|----------|------|
-| Virtuals Leaderboard | `api.virtuals.io/api/agdp-leaderboard-epochs/5/ranking` | Agent info, revenue, buyers, IDs |
-| ACP Job Log | `acpx.virtuals.io/api/agdp/agent/{id}/job-log` | Individual jobs, clients, timestamps, fees |
-| 8004scan | `8004scan.io/api/v1/stats/agents/{chain}/{tokenId}` | ERC-8004 identity, reputation |
-| Virtuals Agent | `api.virtuals.io/api/virtuals/{id}` | Token info, wallet, metadata |
-
-## Key Contract Addresses (Base Mainnet)
-
-| Contract | Address |
+| Contract | Purpose |
 |----------|---------|
-| ACP V1 | `0x6a1FE26D54ab0d3E1e3168f2e0c0cDa5cC0A0A4A` |
-| ACP V2 | `0xa6C9BA866992cfD7fd6460ba912bfa405adA9df0` |
-| ERC-8004 IdentityRegistry | `0x8004A818BFB912233c491871b3d84c89A494BD9e` |
-| ERC-8004 ReputationRegistry | `0x8004B663056A597Dffe9eCcC1965A193B7388713` |
-| USDC | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` |
+| `SieveRegistry.sol` | On-chain DAS store. Maps agent address → score + 5 signal breakdown. Public reads, authorized writes. |
+| `SieveHook.sol` | ERC-8183 IACPHook. Reads registry on `complete()`. Reverts if DAS < threshold. Emits `DemandAuthenticated` on pass. |
+| `AgenticCommerce.sol` | Simplified ERC-8183 reference with full job lifecycle + hook integration. |
+| `IACPHook.sol` | Hook interface from the ERC-8183 standard. |
 
-## Why This Matters
+---
 
-Every major ERC spawned its own verification layer:
+## Run It
 
-| ERC | Problem | Solution |
-|-----|---------|----------|
-| ERC-20 | Wash-traded volume | DEX Screener, CoinGecko adjusted volume |
-| ERC-721 | NFT wash trading | Bubblemaps, Hildobby's Dune dashboards |
-| ERC-4626 | Recursive deposit TVL inflation | DeFiLlama double-counting detection |
-| **ERC-8183** | **Sybil-farmed aGDP** | **Sieve** ← you are here |
+```bash
+# Backend (scoring engine + API)
+cd backend
+npm install
+npm test              # 29 tests passing
+npm start             # http://localhost:3001
 
-Without Sieve, the entire agent economy's metrics are gameable. Real builders get outranked by sybil operations. Token investors see inflated revenue. Incentive pools reward farming over building. The leaderboard becomes the attack surface.
+# Frontend (dashboard)
+cd dashboard  
+npm install
+npm run dev           # http://localhost:5173
+```
 
-With Sieve, protocols can distribute incentives based on **verified revenue** instead of raw volume. Farming becomes unprofitable. Real demand becomes visible.
+---
 
-## Bounty Alignment
+## Standards Composition
 
-- **Virtuals ERC-8183 Open Build**: Most meaningful hook use case — demand authenticity as settlement enforcement
-- **Open Track (Agents that Trust)**: Solves the core trust problem for all agent commerce
-- **Self Protocol**: World ID as cold-start solution for new users (architectural integration)
+Sieve is built on three composable standards:
 
-## Tech Stack
+- **ACP (Virtuals)** — The data source. Job history, payment flows, client-provider relationships. This is where sybil farming happens and where the evidence lives.
 
-- Solidity ^0.8.20 (ERC-8183 hooks, ERC-165)
-- React (live dashboard)
-- Node.js (scoring engine)
-- Base mainnet / Sepolia (deployment target)
-- ACP V1/V2 events (on-chain data source)
+- **ERC-8004** — The identity layer. 106,000+ registered agents on Base. Cross-references agent identity with Sieve scores. Agents with both an ERC-8004 identity and a high DAS are the most trustworthy in the ecosystem.
 
-## Team
+- **ERC-8183** — The enforcement layer. Sieve's hook intercepts settlement and blocks agents below the DAS threshold. This makes farming unprofitable at the protocol level — you can create shell wallets and generate fake jobs, but you can't extract the revenue.
 
-Solo builder. Built during Synthesis Hackathon, March 2026.
+---
 
-## License
+## The Web2 Analogy
 
-MIT
+| Era | Open system | Exploit | Verification layer |
+|-----|-------------|---------|-------------------|
+| Web 1.0 | Anyone can publish | SEO spam, content farms | Google PageRank |
+| App stores | Anyone can ship | Fake reviews, clone apps | Review systems, fraud detection |
+| Social | Anyone can post | Bot followers, fake engagement | Follower audits, purges |
+| DeFi | Anyone can trade | Wash trading, inflated TVL | DEX Screener, adjusted metrics |
+| **Agent commerce** | **Any agent can transact** | **Sybil farming, fake revenue** | **Sieve** |
+
+The permissionless nature of blockchain is what makes agent commerce possible — agents can offer and buy services without permission, approval, or intermediaries. That same openness means the metrics used to rank, fund, and reward agents are gameable. Sieve doesn't make the system permissioned. It makes the system honest.
+
+---
+
+Built for Synthesis Hackathon 2026 · [github.com/saurrx/sieve](https://github.com/saurrx/sieve)

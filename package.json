@@ -1,0 +1,19 @@
+{
+  "name": "sieve",
+  "version": "1.0.0",
+  "description": "Demand Authenticity Engine for AI Agent Commerce",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "score": "node scripts/scoring-engine.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  }
+}
