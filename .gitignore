@@ -3,3 +3,6 @@ cache/
 .DS_Store
 dashboard/app/node_modules/
 dashboard/app/dist/
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat

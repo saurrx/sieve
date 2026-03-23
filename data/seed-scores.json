@@ -1,0 +1,699 @@
+[
+  {
+    "agentId": 1674,
+    "name": "Capminal",
+    "wallet": "0x35B218eBEe18c6b359d1fFd2BAE80d0B5228bc8b",
+    "virtualId": "23397",
+    "rank": 1,
+    "revenue": 16933.959999999995,
+    "buyers": 1262,
+    "jobs": 8507,
+    "successRate": 68.79,
+    "das": 60,
+    "verdict": "PASS",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 70,
+        "weight": 25,
+        "evidence": "7 unique funders for 245 clients. Top funder: 92/245 clients (38%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "243/245 clients transact with other providers. Coordinated: avg Jaccard similarity 98% — clients share same destination set"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=9.76, avg=498.8s, stddev=4867.7s, min=2.6s, max=71651.9s"
+      },
+      "circularFlow": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "0/245 clients funded by provider/owner/contracts (0% circular)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 22890,
+    "name": "Verdict Protocol",
+    "wallet": "0x0A708B3A0AE668D2E2cE7AfCc14843d2D2d8840A",
+    "virtualId": "50721",
+    "rank": 2,
+    "revenue": 16400.1,
+    "buyers": 201,
+    "jobs": 757,
+    "successRate": 57.31,
+    "das": 45,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 0,
+        "weight": 25,
+        "evidence": "1 unique funders for 50 clients. Top funder: 50/50 clients (100%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=10.37, avg=62.9s, stddev=652.3s, min=2.6s, max=10334.8s"
+      },
+      "circularFlow": {
+        "value": 0,
+        "weight": 20,
+        "evidence": "50/50 clients funded via suspicious sources (100% circular). Disperse (contract) funds 50/50 clients (100%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 12381,
+    "name": "Hyperbet",
+    "wallet": "0xdF33B1fD3abA85eA27194222875b80ABe0F5D766",
+    "virtualId": 42524,
+    "rank": 3,
+    "revenue": 15949,
+    "buyers": 205,
+    "jobs": 5186,
+    "successRate": 76.4,
+    "das": 25,
+    "verdict": "BLOCK",
+    "confidence": "low",
+    "signals": {
+      "funderConcentration": {
+        "value": 0,
+        "weight": 25,
+        "evidence": "1 unique funders for 5 clients. Top funder: 5/5 clients (100%)"
+      },
+      "buyerIndependence": {
+        "value": 0,
+        "weight": 25,
+        "evidence": "0/5 clients transact with other providers. Capped: shared funding source overrides outbound diversity"
+      },
+      "timingDistribution": {
+        "value": 9,
+        "weight": 20,
+        "evidence": "CV=0.07, avg=12.0s, stddev=0.8s, min=10.1s, max=13.9s"
+      },
+      "circularFlow": {
+        "value": 0,
+        "weight": 20,
+        "evidence": "5/5 clients funded via suspicious sources (100% circular). Disperse (contract) funds 5/5 clients (100%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 1924,
+    "name": "Captain Dackie",
+    "wallet": "0x03c4AE20f140c6f80E6b43635Fda1a89C1Cbf669",
+    "virtualId": "23397",
+    "rank": 4,
+    "revenue": 15065,
+    "buyers": 989,
+    "jobs": 2744,
+    "successRate": 80.75,
+    "das": 69,
+    "verdict": "PASS",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "7 unique funders for 50 clients. Top funder: 29/50 clients (58%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=13.59, avg=326.7s, stddev=4440.3s, min=2.1s, max=69806.6s"
+      },
+      "circularFlow": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "0/50 clients funded by provider/owner/contracts (0% circular)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 18350,
+    "name": "RoboSphere Network",
+    "wallet": "0xC4ac3248aC70787AEBDc4AD165caE5d237057725",
+    "virtualId": "49211",
+    "rank": 5,
+    "revenue": 14800,
+    "buyers": 1017,
+    "jobs": 2201,
+    "successRate": 74.31,
+    "das": 69,
+    "verdict": "PASS",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "5 unique funders for 50 clients. Top funder: 27/50 clients (54%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=13.32, avg=319.1s, stddev=4250.1s, min=2.1s, max=66914.2s"
+      },
+      "circularFlow": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "0/50 clients funded by provider/owner/contracts (0% circular)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 23455,
+    "name": "Marriage Sunna",
+    "wallet": "0x3d99d7286706Ddd93AdcEF6295c7D51444720B67",
+    "virtualId": "50434",
+    "rank": 6,
+    "revenue": 14899.01,
+    "buyers": 201,
+    "jobs": 751,
+    "successRate": 66.52,
+    "das": 45,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 0,
+        "weight": 25,
+        "evidence": "1 unique funders for 50 clients. Top funder: 50/50 clients (100%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=10.59, avg=62.3s, stddev=660.0s, min=2.4s, max=10455.9s"
+      },
+      "circularFlow": {
+        "value": 0,
+        "weight": 20,
+        "evidence": "50/50 clients funded via suspicious sources (100% circular). Disperse (contract) funds 50/50 clients (100%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 23435,
+    "name": "Hana VC",
+    "wallet": "0x50B3d8b5c017A86dcdEdC740864735EB8179D530",
+    "virtualId": "51925",
+    "rank": 7,
+    "revenue": 14760.02,
+    "buyers": 201,
+    "jobs": 755,
+    "successRate": 66.46,
+    "das": 45,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 0,
+        "weight": 25,
+        "evidence": "1 unique funders for 50 clients. Top funder: 50/50 clients (100%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=10.44, avg=62.5s, stddev=652.9s, min=2.5s, max=10343.4s"
+      },
+      "circularFlow": {
+        "value": 0,
+        "weight": 20,
+        "evidence": "50/50 clients funded via suspicious sources (100% circular). Disperse (contract) funds 50/50 clients (100%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 23514,
+    "name": "Base 003",
+    "wallet": "0x577603d5f52951382C5a4C55C41F848c53318EDd",
+    "virtualId": "52008",
+    "rank": 8,
+    "revenue": 14539.840000000013,
+    "buyers": 201,
+    "jobs": 839,
+    "successRate": 69.34,
+    "das": 45,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 0,
+        "weight": 25,
+        "evidence": "1 unique funders for 50 clients. Top funder: 50/50 clients (100%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=10.39, avg=62.6s, stddev=650.3s, min=2.6s, max=10302.0s"
+      },
+      "circularFlow": {
+        "value": 0,
+        "weight": 20,
+        "evidence": "50/50 clients funded via suspicious sources (100% circular). Disperse (contract) funds 50/50 clients (100%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 18347,
+    "name": "Synapse Robotics Network",
+    "wallet": "0x4b33758d85678Ea86cD875AF8caF318462268Ba8",
+    "virtualId": "49212",
+    "rank": 9,
+    "revenue": 12495,
+    "buyers": 1004,
+    "jobs": 2337,
+    "successRate": 82.29,
+    "das": 82,
+    "verdict": "PASS",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 67,
+        "weight": 25,
+        "evidence": "5 unique funders for 50 clients. Top funder: 24/50 clients (48%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=12.98, avg=322.2s, stddev=4182.3s, min=1.1s, max=65250.0s"
+      },
+      "circularFlow": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "0/50 clients funded by provider/owner/contracts (0% circular)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 18349,
+    "name": "MechaMind Protocol",
+    "wallet": "0x3D4F1bDBD22c8Db893AF3f0F15Ab486B46e75aa2",
+    "virtualId": "49210",
+    "rank": 10,
+    "revenue": 12120,
+    "buyers": 999,
+    "jobs": 2234,
+    "successRate": 79.14,
+    "das": 81,
+    "verdict": "PASS",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 65,
+        "weight": 25,
+        "evidence": "6 unique funders for 50 clients. Top funder: 23/50 clients (46%)"
+      },
+      "buyerIndependence": {
+        "value": 100,
+        "weight": 25,
+        "evidence": "50/50 clients transact with other providers"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=13.41, avg=324.7s, stddev=4356.0s, min=1.7s, max=68340.2s"
+      },
+      "circularFlow": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "0/50 clients funded by provider/owner/contracts (0% circular)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 18348,
+    "name": "AutoForge AI",
+    "wallet": "0x566c096e1E7145EDa1d96D0b7d580335C6E7120a",
+    "virtualId": "49209",
+    "rank": 11,
+    "revenue": 11975.01,
+    "buyers": 1007,
+    "jobs": 2231,
+    "successRate": 79.11,
+    "das": 60,
+    "verdict": "PASS",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 69,
+        "weight": 25,
+        "evidence": "7 unique funders for 250 clients. Top funder: 104/250 clients (42%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "250/250 clients transact with other providers. Coordinated: avg Jaccard similarity 95% — clients share same destination set"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=10.52, avg=667.1s, stddev=7015.5s, min=1.8s, max=83419.7s"
+      },
+      "circularFlow": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "0/250 clients funded by provider/owner/contracts (0% circular)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 20501,
+    "name": "Gaffer",
+    "wallet": "0xBb5c9F52232d4F1E4f29f34fc5d06482282Bb374",
+    "virtualId": null,
+    "rank": 12,
+    "revenue": 9449.880000000001,
+    "buyers": 584,
+    "jobs": 6180,
+    "successRate": 76.83,
+    "das": 29,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "6 unique funders for 170 clients. Top funder: 96/170 clients (56%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "170/170 clients transact with other providers. Coordinated: avg Jaccard similarity 98% — clients share same destination set. Capped: shared funding source overrides outbound diversity"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=10.23, avg=356.9s, stddev=3650.5s, min=0.0s, max=57807.9s"
+      },
+      "circularFlow": {
+        "value": 12,
+        "weight": 20,
+        "evidence": "149/170 clients funded via suspicious sources (88% circular). ERC1967Proxy (contract) funds 149/170 clients (88%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 2651,
+    "name": "Seeker",
+    "wallet": "0x5388E880D272d21FE1f9312242cCbb3336bDd12e",
+    "virtualId": "44619",
+    "rank": 13,
+    "revenue": 8837,
+    "buyers": 607,
+    "jobs": 25679,
+    "successRate": 69.32,
+    "das": 27,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "6 unique funders for 127 clients. Top funder: 89/127 clients (70%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "127/127 clients transact with other providers. Coordinated: avg Jaccard similarity 100% — clients share same destination set. Capped: shared funding source overrides outbound diversity"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=1.15, avg=87.0s, stddev=99.6s, min=0.0s, max=681.5s"
+      },
+      "circularFlow": {
+        "value": 6,
+        "weight": 20,
+        "evidence": "119/127 clients funded via suspicious sources (94% circular). ERC1967Proxy (contract) funds 119/127 clients (94%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 18274,
+    "name": "EvalRank",
+    "wallet": "0xA1b2C0E56c643F9a490BFcccAB7e60A810566B7C",
+    "virtualId": "49161",
+    "rank": 14,
+    "revenue": 8589.01,
+    "buyers": 598,
+    "jobs": 6600,
+    "successRate": 80.72,
+    "das": 27,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "8 unique funders for 163 clients. Top funder: 104/163 clients (64%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "163/163 clients transact with other providers. Coordinated: avg Jaccard similarity 100% — clients share same destination set. Capped: shared funding source overrides outbound diversity"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=1.12, avg=136.3s, stddev=153.2s, min=0.1s, max=862.0s"
+      },
+      "circularFlow": {
+        "value": 6,
+        "weight": 20,
+        "evidence": "154/163 clients funded via suspicious sources (94% circular). ERC1967Proxy (contract) funds 154/163 clients (94%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 26,
+    "name": "aixbt",
+    "wallet": "0x5FaCEbD66D78A69b400dC702049374B95745FBc5",
+    "virtualId": "1199",
+    "rank": 15,
+    "revenue": 8030.170000000001,
+    "buyers": 1894,
+    "jobs": 27537,
+    "successRate": 77,
+    "das": 27,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "7 unique funders for 175 clients. Top funder: 116/175 clients (66%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "175/175 clients transact with other providers. Coordinated: avg Jaccard similarity 100% — clients share same destination set. Capped: shared funding source overrides outbound diversity"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=5.89, avg=426.3s, stddev=2511.2s, min=0.1s, max=32036.1s"
+      },
+      "circularFlow": {
+        "value": 6,
+        "weight": 20,
+        "evidence": "165/175 clients funded via suspicious sources (94% circular). ERC1967Proxy (contract) funds 165/175 clients (94%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 842,
+    "name": "ArAIstotle",
+    "wallet": "0x0B6a786ECB21a4f668548b09CaCf8deC4c0956fD",
+    "virtualId": "35498",
+    "rank": 16,
+    "revenue": 6761.650000000001,
+    "buyers": 703,
+    "jobs": 65427,
+    "successRate": 73.91,
+    "das": 28,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "7 unique funders for 182 clients. Top funder: 109/182 clients (60%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "182/182 clients transact with other providers. Coordinated: avg Jaccard similarity 100% — clients share same destination set. Capped: shared funding source overrides outbound diversity"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=14.23, avg=319.5s, stddev=4545.8s, min=0.0s, max=71904.4s"
+      },
+      "circularFlow": {
+        "value": 10,
+        "weight": 20,
+        "evidence": "163/182 clients funded via suspicious sources (90% circular). ERC1967Proxy (contract) funds 163/182 clients (90%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  },
+  {
+    "agentId": 565,
+    "name": "Otto AI - Market Alpha Agent",
+    "wallet": "0xe5B38F112b92Ce8F2103eDAbA7E9a9842f12d5f6",
+    "virtualId": null,
+    "rank": 18,
+    "revenue": 5501.6600000000035,
+    "buyers": 2284,
+    "jobs": 46148,
+    "successRate": 80.62,
+    "das": 28,
+    "verdict": "BLOCK",
+    "confidence": "high",
+    "signals": {
+      "funderConcentration": {
+        "value": 15,
+        "weight": 25,
+        "evidence": "8 unique funders for 134 clients. Top funder: 89/134 clients (66%)"
+      },
+      "buyerIndependence": {
+        "value": 10,
+        "weight": 25,
+        "evidence": "134/134 clients transact with other providers. Coordinated: avg Jaccard similarity 100% — clients share same destination set. Capped: shared funding source overrides outbound diversity"
+      },
+      "timingDistribution": {
+        "value": 100,
+        "weight": 20,
+        "evidence": "CV=5.70, avg=316.1s, stddev=1803.0s, min=0.1s, max=20259.3s"
+      },
+      "circularFlow": {
+        "value": 7,
+        "weight": 20,
+        "evidence": "124/134 clients funded via suspicious sources (93% circular). ERC1967Proxy (contract) funds 124/134 clients (93%)"
+      },
+      "humanAttestation": {
+        "value": 0,
+        "weight": 10,
+        "evidence": "Not implemented — World ID integration pending"
+      }
+    }
+  }
+]
