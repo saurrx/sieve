@@ -495,10 +495,10 @@ export default function SieveLive() {
       {/* ═══ LANDING — LEADERBOARD ═══ */}
       {!result && !loading && (
         <div style={{ maxWidth: 820, margin: "0 auto" }}>
-          {leaderboard && leaderboard.filter(a => a.das != null).length > 0 && (
+          {leaderboard && leaderboard.length > 0 && (
             <div style={{ marginBottom: 24 }}>
               <div style={{ fontSize: 12, fontWeight: 600, color: "#94a3b8", marginBottom: 10 }}>
-                TOP {leaderboard.filter(a => a.das != null).length} aGDP AGENTS — SIEVE AUDIT
+                TOP {leaderboard.length} aGDP AGENTS — SIEVE AUDIT
               </div>
               <div style={{ background: "#111827", border: "1px solid #1e293b", borderRadius: 8, overflow: "hidden" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "36px 1fr 75px 55px 50px 70px", padding: "8px 12px", fontSize: 10, color: "#475569", borderBottom: "1px solid #1e293b", fontWeight: 600 }}>
@@ -506,7 +506,7 @@ export default function SieveLive() {
                   <span style={{ textAlign: "right" }}>Buyers</span><span style={{ textAlign: "center" }}>DAS</span>
                   <span style={{ textAlign: "center" }}>Settlement</span>
                 </div>
-                {leaderboard.filter(a => a.das != null).map(a => {
+                {leaderboard.map(a => {
                   const das = a.das;
                   const scored = das != null;
                   const v = a.verdict;

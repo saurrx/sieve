@@ -239,9 +239,24 @@ app.listen(PORT, () => {
   console.log(`  POST /api/refresh/:identifier`);
   console.log(`  GET  /api/health`);
 
-  // Pre-warm: fetch leaderboard on startup
+  // Pre-warm: fetch leaderboard + score top 20 on startup
   virtuals.getLeaderboard()
-    .then((lb) => console.log(`Leaderboard loaded: ${lb.length} agents`))
+    .then(async (lb) => {
+      console.log(`Leaderboard loaded: ${lb.length} agents`);
+      const top = lb.slice(0, 20);
+      for (let i = 0; i < top.length; i++) {
+        const a = top[i];
+        try {
+          console.log(`[warmup ${i+1}/${top.length}] Scoring ${a.agentName}...`);
+          await pipeline.scoreAgent(String(a.agentId));
+          const cached = cache.get(`agents/${a.agentId}-score`);
+          console.log(`[warmup ${i+1}/${top.length}] ${a.agentName}: DAS ${cached?.score?.das ?? '?'}`);
+        } catch (err) {
+          console.error(`[warmup] ${a.agentName} failed: ${err.message}`);
+        }
+      }
+      console.log(`[warmup] Done — ${top.length} agents scored`);
+    })
     .catch((err) => console.error(`Leaderboard pre-warm failed: ${err.message}`));
 });
 
