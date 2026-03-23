@@ -5,7 +5,7 @@ import * as virtuals from "./adapters/virtuals.js";
 import * as cache from "./engine/cache.js";
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: process.env.CORS_ORIGIN || "*" }));
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
@@ -166,7 +166,7 @@ app.get("/api/agent", async (req, res) => {
     ],
 
     api: {
-      base_url: "http://localhost:3001",
+      base_url: process.env.API_BASE_URL || "http://localhost:3001",
       endpoints: [
         { method: "GET",  path: "/api/agent",               description: "This endpoint — full project summary for AI consumption" },
         { method: "GET",  path: "/api/leaderboard",          description: "Top 20 agents with cached DAS scores" },

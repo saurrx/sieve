@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 
 // ═══ CONFIG ═══
-const SIEVE_API = "http://localhost:3001/api";
+const SIEVE_API = (import.meta.env.VITE_API_URL || "http://localhost:3001") + "/api";
 const CONTRACTS = {
   ACP_V1: "0x6a1FE26D54ab0d3E1e3168f2e0c0cDa5cC0A0A4A",
   ACP_V2: "0xa6C9BA866992cfD7fd6460ba912bfa405adA9df0",

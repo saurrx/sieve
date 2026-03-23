@@ -5,6 +5,10 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CACHE_DIR = join(__dirname, "..", "cache");
 
+// Ensure cache directories exist on startup
+mkdirSync(join(CACHE_DIR, "agents"), { recursive: true });
+mkdirSync(join(CACHE_DIR, "wallets"), { recursive: true });
+
 function resolvePath(key) {
   return join(CACHE_DIR, key.endsWith(".json") ? key : `${key}.json`);
 }
