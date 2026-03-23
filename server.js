@@ -1,9 +1,12 @@
 import express from "express";
 import cors from "cors";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
 import * as pipeline from "./engine/pipeline.js";
 import * as virtuals from "./adapters/virtuals.js";
 import * as cache from "./engine/cache.js";
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
 app.use(cors({ origin: process.env.CORS_ORIGIN || "*" }));
 app.use(express.json());
@@ -214,6 +217,15 @@ app.get("/api/health", (req, res) => {
     leaderboardFresh: lbAge < cache.TTL.LEADERBOARD,
     uptime: Math.round(process.uptime()),
   });
+});
+
+// ── Serve frontend static build ───────────────────────────────────
+const DIST = join(__dirname, "dashboard", "app", "dist");
+app.use(express.static(DIST));
+app.get("*", (req, res, next) => {
+  // SPA fallback — serve index.html for non-API routes
+  if (req.path.startsWith("/api")) return next();
+  res.sendFile(join(DIST, "index.html"));
 });
 
 // ── Start ─────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const SIEVE_API = (import.meta.env.VITE_API_URL || "http://localhost:3001") + "/api";
+const SIEVE_API = (import.meta.env.VITE_API_URL || "") + "/api";
 const dasColor = (s) => s >= 70 ? "#22c55e" : s >= 40 ? "#eab308" : "#ef4444";
 const bsLink = (addr) => `https://base.blockscout.com/address/${addr}`;
 const shortAddr = (addr) => addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : "";

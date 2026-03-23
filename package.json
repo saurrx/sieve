@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Demand Authenticity Engine for AI Agent Commerce",
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "node server.js",
+    "build": "cd dashboard/app && npm install && npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "score": "node scripts/scoring-engine.js"
